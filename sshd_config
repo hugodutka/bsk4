@@ -1,0 +1,19 @@
+ChallengeResponseAuthentication no
+PrintMotd no
+Subsystem sftp /usr/lib/openssh/sftp-server
+PermitTunnel yes
+PasswordAuthentication no
+PubkeyAuthentication no
+
+Match User root
+    PubkeyAuthentication yes
+    MaxSessions 1
+
+Match Group DBB,DBD
+    PubkeyAuthentication yes
+
+Match Group dyrektor_DBB,dyrektor_DBD Address *
+    PubkeyAuthentication no
+
+Match Group dyrektor_DBB,dyrektor_DBD Address 192.168.0.241
+    PubkeyAuthentication yes
